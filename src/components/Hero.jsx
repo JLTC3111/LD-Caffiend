@@ -19,7 +19,7 @@ export default function Hero() {
                 Did you know...
             </h3>
         </div>
-            <h5>That caffeine&aps; half-life is about 5 hours?</h5>
+            <h5>That caffeine's half-life is about 5 hours?</h5>
             <p>This means that after 5 hours, half the caffeine you consumed is still in your system, keeping you alert longer! So if you drink a cup of coffee with 200 mg of caffeine, 5 hours, later, you&apos;ll still have about 100mg of caffeine in your system </p>
         
     </div>
