@@ -6,7 +6,7 @@ export default function Hero() {
         Coffee Tracking for Coffee <abbr title="An enthusiast or devotee">"Fiends"</abbr>!</h1>
     
      <div className="benefits-list">
-       <h3 className="font-bolder">Try<span className="text-gradient">Caffiend</span> and start...</h3>
+       <h3 className="font-bolder"> Try <span className="text-gradient">Caffiend</span> and start...</h3>
         <p>✅ Tracking every coffee</p>
         <p>✅ Measuring your blood caffine levels</p>
         <p>✅ Costing and quantifying your addiction</p>

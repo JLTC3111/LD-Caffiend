@@ -27,6 +27,7 @@ function App() {
       )}
       {(isAuthenticated && isData) && (authenticatedContent)}
     </Layout>
+    
   )
 }
 
