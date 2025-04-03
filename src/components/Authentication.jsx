@@ -9,6 +9,15 @@ export default function Authentication(props) {
     const [error, setError] = useState(null)
 
     const { signup, login } = useAuth()
+   
+    // Firebase error codes mapping to custom messages
+    const firebaseErrorMessages = {
+        'auth/invalid-email': 'The email address is not valid.',
+        'auth/user-not-found': 'No user found with this email address.',
+        'auth/wrong-password': 'Incorrect password. Please try again.',
+        'auth/email-already-in-use': 'The email address is already in use.',
+        'auth/weak-password': 'Password should be at least 6 characters.',
+    };
 
     async function handleAuthenticate() {
         if (!email || !email.includes('@') || !password || password.length < 6 || isAuthenticating) { return }
@@ -25,8 +34,8 @@ export default function Authentication(props) {
             }
             handleCloseModal()
         } catch (err) {
-            console.log(err.message)
-            setError(err.message)
+            const firebaseErrorMessage = firebaseErrorMessages[err.code] || 'An error occurred. Please try again.'; // Map Firebase error to a custom message
+            setError(firebaseErrorMessage); // Display the custom error message
         } finally {
             setIsAuthenticating(false)
         }
@@ -38,7 +47,7 @@ export default function Authentication(props) {
             <h2 className="sign-up-text">{isRegistration ? 'Sign Up' : 'Login'}</h2>
             <p>{isRegistration ? 'Create an account!' : 'Sign in to your account!'}</p>
             {error && (
-                <p>❌ {error}</p>
+                <p className="error-message">❌ {error}</p> // Display custom error messages
             )}
             <input value={email} onChange={(e) => { setEmail(e.target.value) }} placeholder="Email" />
             <input value={password} onChange={(e) => { setPassword(e.target.value) }} placeholder="********" type="password" />
