@@ -278,5 +278,34 @@ footer {
     line-height: 1;
   }
 
+  .image-slider {
+    width: 100vw;
+    overflow: hidden;
+    position: relative;
+    white-space: nowrap;
+    background-color: #e8dfdf; /* Optional: Background for contrast */
+    padding: 10px 0; /* Optional: Adjust spacing */
+    margin-left:-420px;
+  }
+  
+  .image-track {
+    display: flex;
+    width: 200%;
+    gap: 20px;
+    animation: scrollImages 25s infinite;
+  }
+  
+  .image-track img {
+    width: 250px; /* Adjust size */
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+  
+  @keyframes scrollImages {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+
 
 }
