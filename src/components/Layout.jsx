@@ -6,9 +6,12 @@ import { useAuth } from '../context/AuthContext'
 export default function Layout(props) {
     const { children } = props
 
-    const [showModal, setShowModal] = useState(false)
+    const [showImageModal, setShowImageModal] = useState(false)
+    const [showAuthModal, setShowAuthModal] = useState(false);
 
     const { globalUser, logout } = useAuth()
+
+    const [selectedImage, setSelectedImage] = useState(null)
 
     const header = (
         <header>
@@ -21,7 +24,7 @@ export default function Layout(props) {
                     <p>Logout</p>
                 </button>
             ) : (
-                <button onClick={() => { setShowModal(true) }}>
+                <button onClick={() => { setShowAuthModal(true) }}>
                     <p>Sign Up or Login</p>
                     <i className="fa-solid fa-mug-hot"></i>
                 </button>
@@ -29,7 +32,6 @@ export default function Layout(props) {
         </header>
     )
 
-    
 
     const footer = (
         <footer>
@@ -37,42 +39,61 @@ export default function Layout(props) {
         </footer>
     )
 
-    function handleCloseModal() {
-        setShowModal(false)
-    }
+    const handleCloseImageModal = () => {
+        setShowImageModal(false);
+        setSelectedImage(null); // Reset the selected image
+      };
     
+    function handleCloseModal() {
+        setShowAuthModal(false)
+    }
+
+    // Handle image click to open modal
+    const handleImageClick = (imageSrc) => {
+        setSelectedImage(imageSrc)
+        setShowImageModal(true) // Show the modal with the selected image
+    }
     return (
         <>
         
         <div className="image-slider">
             <div className="image-track">
-             <img src="/images/coffee1.png" alt="Coffee 1" />
-             <img src="/images/coffee2.png" alt="Coffee 2" />
-             <img src="/images/coffee3.png" alt="Coffee 3" />
-             <img src="/images/coffee4.png" alt="Coffee 4" />
-             <img src="/images/coffee5.png" alt="Coffee 5" />
-             <img src="/images/coffee6.png" alt="Coffee 6" />
-             <img src="/images/coffee7.png" alt="Coffee 7" />
-             <img src="/images/coffee8.png" alt="Coffee 8" />
-             <img src="/images/coffee9.png" alt="Coffee 9" />
-             <img src="/images/coffee10.png" alt="Coffee 10" />
-             <img src="/images/coffee11.png" alt="Coffee 11" />  
-             <img src="/images/coffee1.png" alt="Coffee 1" />
-             <img src="/images/coffee2.png" alt="Coffee 2" />
-             <img src="/images/coffee3.png" alt="Coffee 3" />
-             <img src="/images/coffee4.png" alt="Coffee 4" />
-             <img src="/images/coffee5.png" alt="Coffee 5" />
-             <img src="/images/coffee6.png" alt="Coffee 6" />
-             <img src="/images/coffee7.png" alt="Coffee 7" />
-             <img src="/images/coffee8.png" alt="Coffee 8" />
-             <img src="/images/coffee9.png" alt="Coffee 9" />
-             <img src="/images/coffee10.png" alt="Coffee 10" />
-             <img src="/images/coffee11.png" alt="Coffee 11" />            
+             <img src="/images/coffee1.png" alt="Coffee 1" onClick={() => handleImageClick('/images/coffee1.png')} />
+             <img src="/images/coffee2.png" alt="Coffee 2" onClick={() => handleImageClick('/images/coffee2.png')} />
+             <img src="/images/coffee3.png" alt="Coffee 3" onClick={() => handleImageClick('/images/coffee3.png')}/>
+             <img src="/images/coffee4.png" alt="Coffee 4" onClick={() => handleImageClick('/images/coffee4.png')}/>
+             <img src="/images/coffee5.png" alt="Coffee 5" onClick={() => handleImageClick('/images/coffee5.png')}/>
+             <img src="/images/coffee6.png" alt="Coffee 6" onClick={() => handleImageClick('/images/coffee6.png')}/>
+             <img src="/images/coffee7.png" alt="Coffee 7" onClick={() => handleImageClick('/images/coffee7.png')}/>
+             <img src="/images/coffee8.png" alt="Coffee 8" onClick={() => handleImageClick('/images/coffee8.png')}/>
+             <img src="/images/coffee9.png" alt="Coffee 9" onClick={() => handleImageClick('/images/coffee9.png')}/>
+             <img src="/images/coffee10.png" alt="Coffee 10" onClick={() => handleImageClick('/images/coffee10.png')}/>
+             <img src="/images/coffee11.png" alt="Coffee 11" onClick={() => handleImageClick('/images/coffee11.png')}/>  
+             <img src="/images/coffee1.png" alt="Coffee 1" onClick={() => handleImageClick('/images/coffee1.png')}/>
+             <img src="/images/coffee2.png" alt="Coffee 2" onClick={() => handleImageClick('/images/coffee2.png')}/>
+             <img src="/images/coffee3.png" alt="Coffee 3" onClick={() => handleImageClick('/images/coffee3.png')}/>
+             <img src="/images/coffee4.png" alt="Coffee 4" onClick={() => handleImageClick('/images/coffee4.png')}/>
+             <img src="/images/coffee5.png" alt="Coffee 5" onClick={() => handleImageClick('/images/coffee5.png')}/>
+             <img src="/images/coffee6.png" alt="Coffee 6" onClick={() => handleImageClick('/images/coffee6.png')}/>
+             <img src="/images/coffee7.png" alt="Coffee 7" onClick={() => handleImageClick('/images/coffee7.png')}/>
+             <img src="/images/coffee8.png" alt="Coffee 8" onClick={() => handleImageClick('/images/coffee8.png')}/>
+             <img src="/images/coffee9.png" alt="Coffee 9" onClick={() => handleImageClick('/images/coffee9.png')}/>
+             <img src="/images/coffee10.png" alt="Coffee 10" onClick={() => handleImageClick('/images/coffee10.png')}/>
+             <img src="/images/coffee11.png" alt="Coffee 11" onClick={() => handleImageClick('/images/coffee11.png')}/>            
             </div>
         </div>
-            {showModal && (
+
+            {showAuthModal && (
                 <Modal handleCloseModal={handleCloseModal}>
-                    <Authentication handleCloseModal={handleCloseModal} />
+                    <Authentication handleCloseModal={handleCloseModal} />   
+                </Modal>
+
+            )}
+            {showImageModal && selectedImage && (
+                <Modal handleCloseModal={handleCloseImageModal}>
+                    <div className="modal-content">
+                      <img src={selectedImage} alt="Full-size" />
+                    </div>
                 </Modal>
             )}
             {header}
