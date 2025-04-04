@@ -14,6 +14,7 @@ export default function Layout(props) {
     const [selectedImage, setSelectedImage] = useState(null)
 
     const header = (
+        
         <header>
             <div>
                 <h1 className="text-gradient">CAFFIEND</h1>
@@ -30,6 +31,7 @@ export default function Layout(props) {
                 </button>
             )}
         </header>
+        
     )
 
 

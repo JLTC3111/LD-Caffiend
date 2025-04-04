@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useAuth } from '../context/AuthContext'
 export default function Authentication(props) {
     const { handleCloseModal } = props
@@ -7,7 +7,7 @@ export default function Authentication(props) {
     const [password, setPassword] = useState('')
     const [isAuthenticating, setIsAuthenticating] = useState(false)
     const [error, setError] = useState(null)
-
+    
     const { signup, login } = useAuth()
    
     // Firebase error codes mapping to custom messages
@@ -20,7 +20,7 @@ export default function Authentication(props) {
     };
 
     async function handleAuthenticate() {
-        if (!email || !email.includes('@') || !password || password.length < 6 || isAuthenticating) { return }
+        if (!email || !email.includes('@') || !password || password.length < 8 || isAuthenticating) { return }
         try {
             setIsAuthenticating(true)
             setError(null)
@@ -42,8 +42,25 @@ export default function Authentication(props) {
 
     }
 
+    useEffect(() => {
+        const handleKeyDown = (event) => {
+            if (event.key === "Escape") {
+                handleCloseModal(); // Close the modal when ESC is pressed
+            }
+        };
+
+        // Attach the event listener when the component mounts
+        document.addEventListener("keydown", handleKeyDown);
+
+        // Clean up the event listener when the component unmounts
+        return () => {
+            document.removeEventListener("keydown", handleKeyDown);
+        };
+    }, []); 
+    
     return (
         <>
+        
             <h2 className="sign-up-text">{isRegistration ? 'Sign Up' : 'Login'}</h2>
             <p>{isRegistration ? 'Create an account!' : 'Sign in to your account!'}</p>
             {error && (
