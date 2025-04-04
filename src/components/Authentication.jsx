@@ -47,6 +47,10 @@ export default function Authentication(props) {
             if (event.key === "Escape") {
                 handleCloseModal(); // Close the modal when ESC is pressed
             }
+            if (event.key === "Enter") {
+                event.preventDefault(); // Prevents default form submission
+                handleAuthenticate(); // Trigger authentication when Enter is pressed
+            }
         };
 
         // Attach the event listener when the component mounts
@@ -56,7 +60,7 @@ export default function Authentication(props) {
         return () => {
             document.removeEventListener("keydown", handleKeyDown);
         };
-    }, []); 
+    }, [handleAuthenticate, handleCloseModal]); 
     
     return (
         <>

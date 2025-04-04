@@ -257,8 +257,14 @@ footer {
   gap: 1rem;
 }
 
-
-
+.hero-background {
+  display:flex;
+  background-image: url(/bg-image.jpeg);
+  background-position: absolute;
+  background-size: 500px 200px;
+  background-repeat: no-repeat;
+  z-index: -9999;
+}
 
 @media (min-width: 640px) {
   main h1 {
