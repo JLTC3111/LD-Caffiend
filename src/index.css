@@ -258,18 +258,6 @@ footer {
 }
 
 
-.hero-background {
-  display:flex;
-  background-image: url(/bg-image.jpeg);
-  background-position: absolute;
-  background-size: 800px 200px;
-  background-repeat: no-repeat;
-  z-index: -9999;
-}
-
-h1-style {
-  margin-bottom: 100px;
-}
 
 
 @media (min-width: 640px) {
@@ -290,7 +278,17 @@ h1-style {
     line-height: 1;
   }
 
-  
+.hero-background {
+  display:flex;
+  background-image: url(/bg-image.jpeg);
+  background-position: absolute;
+  background-size: 800px 200px;
+  background-repeat: no-repeat;
+  z-index: -9999;
+}
 
+h1-style {
+  margin-bottom: 100px;
+}
 
 }
