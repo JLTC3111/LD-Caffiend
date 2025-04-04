@@ -284,19 +284,18 @@ footer {
     position: relative;
     white-space: nowrap;
     background-color: #e8dfdf; /* Optional: Background for contrast */
-    padding: 10px 0; /* Optional: Adjust spacing */
-    margin-left:-420px;
+    margin-left:-20px;
   }
   
   .image-track {
     display: flex;
-    width: 200%;
-    gap: 20px;
+    width: 100%;
+    gap: 15px;
     animation: scrollImages 75s infinite;
   }
   
   .image-track img {
-    width: 250px; /* Adjust size */
+    width: 75px; /* Adjust size */
     height: auto;
     border-radius: 10px;
     object-fit: cover;
@@ -362,4 +361,5 @@ footer {
   font-weight: bold;
   margin-top: 10px;
 }
+
 }
