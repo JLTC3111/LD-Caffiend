@@ -258,6 +258,18 @@ footer {
 }
 
 
+.hero-background {
+  display:flex;
+  background-image: url(/bg-image.jpeg);
+  background-position: absolute;
+  background-size: 800px 200px;
+  background-repeat: no-repeat;
+  z-index: -9999;
+}
+
+h1-style {
+  margin-bottom: 100px;
+}
 
 
 @media (min-width: 640px) {
@@ -278,101 +290,7 @@ footer {
     line-height: 1;
   }
 
-  .image-slider {
-    width: 100vw;
-    overflow: hidden;
-    position: relative;
-    white-space: nowrap;
-    background-color: #e8dfdf; /* Optional: Background for contrast */
-    margin-left:-20px;
-  }
   
-  .image-track {
-    display: flex;
-    width: 100%;
-    gap: 15px;
-    animation: scrollImages 45s infinite;
-  }
-  
-  .image-track img {
-    width: 75px; /* Adjust size */
-    height: auto;
-    border-radius: 10px;
-    object-fit: cover;
-  }
-  
-  @keyframes scrollImages {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-100%); }
-  }
 
- /* Modal Overlay */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999; /* Ensure it appears on top */
-}
-
-/* Modal Content Container */
-.modal-content-container {
-  position: relative;
-  max-width: 90%;  /* Adjust modal width to be at most 90% of the viewport width */
-  max-height: 90%; /* Adjust modal height to be at most 90% of the viewport height */
-  overflow: hidden;
-  padding: 20px; /* Optional padding for spacing */
-}
-
-/* Modal Image */
-.modal-content img {
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  max-height: 100%;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-}
-
-/* Close Button */
-.close-modal {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: transparent;
-  color: white;
-  font-size: 1.5rem;
-  border: none;
-  cursor: pointer;
-}
-
-/* Close Button Hover Effect */
-.close-modal:hover {
-  color: red;
-}
-
-.error-message {
-  color: red;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-.hero-background {
-  display:flex;
-  background-image: url(/bg-image.jpeg);
-  background-position: absolute;
-  background-size: 800px 200px;
-  background-repeat: no-repeat;
-  z-index: -9999;
-}
-
-h1-style {
-  margin-bottom: 100px;
-}
 
 }
